@@ -1,0 +1,16 @@
+.clean {
+  -fx-border-color: #000000;
+  -fx-background-color: #ffffff;
+}
+
+.dirty {
+  -fx-border-color: #000000;
+  -fx-background-color: rgba(78, 72, 72, 0.753);
+}
+.object {
+  -fx-border-color: #000000;
+  -fx-background-color: #fdd9b5;
+}
+.rumba {
+  -fx-background-color: #000000;
+}
