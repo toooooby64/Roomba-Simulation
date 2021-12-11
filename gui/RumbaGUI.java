@@ -14,6 +14,7 @@ public class RumbaGUI extends BorderPane {
     private GridPane room;
     private Label[][] locationLabels;
     private Label tiles;
+    private Button restartButton;
     private Button startButton;
     private int rows;
     private int cols;
@@ -27,7 +28,7 @@ public class RumbaGUI extends BorderPane {
         this.chanceOfObject = chanceOfObject;
         setUpGridPane(cols, rows);
         tileResize();
-        setUpButton();
+        setUpHeader();
     }
 
     public void setUpGridPane(int cols, int rows) {
@@ -84,12 +85,13 @@ public class RumbaGUI extends BorderPane {
         }
     }
 
-    public void setUpButton() {
+    public void setUpHeader() {
         HBox header = new HBox();
+        HBox.setMargin(tiles, new Insets(5));
         startButton = new Button("Start");
-        startButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        header.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        restartButton = new Button("New Room");
         header.getChildren().add(startButton);
+        header.getChildren().add(restartButton);
         setTop(header);
     }
 
@@ -100,6 +102,11 @@ public class RumbaGUI extends BorderPane {
         Label newLabel = locationLabels[newCol][newRow];
         newLabel.getStyleClass().clear();
         newLabel.getStyleClass().add("rumba");
+    }
+
+    public void restart() {
+        setUpGridPane(cols, rows);
+        tileResize();
     }
 
     public int getRows() {
@@ -120,5 +127,9 @@ public class RumbaGUI extends BorderPane {
 
     public Button getStartButton() {
         return startButton;
+    }
+
+    public Button getRestartButton() {
+        return restartButton;
     }
 }

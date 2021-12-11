@@ -14,12 +14,23 @@ public class rumbaThread extends Thread {
         this.action = action;
     }
 
+    public rumbaThread() {
+    }
+
     public void setFlag(boolean clicked) {
         flag = clicked;
     }
 
     public boolean getFlag() {
         return flag;
+    }
+
+    public rumbaThread reset() {
+        gui.restart();
+        rumba.restart();
+        action.restart();
+        action.createObjectArray();
+        return new rumbaThread(gui, rumba, action);
     }
 
     @Override

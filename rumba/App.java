@@ -11,42 +11,57 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    int rows = 15;
+    int rows = 20;
     int cols = 20;
     double chanceOfDirtyTile = .75;
-    double chanceOfObject = .05;
+    double chanceOfObject = .15;
     RumbaGUI gui;
     rumbaLoction rumba;
     RumbaReaction action;
+    rumbaThread startThread;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         gui = new RumbaGUI(cols, rows, chanceOfDirtyTile, chanceOfObject);
         rumba = new rumbaLoction();
         action = new RumbaReaction(gui, rumba);
-
+        action.createObjectArray();
+        startThread = new rumbaThread(gui, rumba, action);
         Scene sc = new Scene(gui);
 
         sc.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         gui.getStartButton().setOnAction(new EventHandler<ActionEvent>() {
             boolean clicked = false;
-            rumbaThread test = new rumbaThread(gui, rumba, action);
 
             @Override
             public void handle(ActionEvent event) {
                 if (clicked) {
                     clicked = false;
-                    test.flag = clicked;
+                    gui.getStartButton().setText("Start");
+                    startThread.flag = clicked;
                 } else {
                     clicked = true;
                     gui.getStartButton().setText("Stop");
-                    test.flag = clicked;
-                    test.start();
+                    startThread.flag = clicked;
+                    startThread.start();
+
                 }
             }
         });
-        action.createObjectArray();
-        primaryStage.setTitle("Rumba Simulation");
+        gui.getRestartButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                startThread.flag = true;
+                gui.restart();
+                gui.getStartButton().setText("Start");
+                rumba = new rumbaLoction();
+                action.restart();
+                action.createObjectArray();
+                startThread = startThread.reset();
+            }
+        });
+
+        primaryStage.setTitle("Roomba Simulation");
         primaryStage.setScene(sc);
         primaryStage.show();
     }

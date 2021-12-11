@@ -41,4 +41,8 @@ public class RumbaReaction {
     public boolean rumbaActionUp(boolean direction) {
         return !direction == objectArray[loction.getCol()][loction.getRow() - 1];
     }
+
+    public void restart() {
+        testGui.restart();
+    }
 }

@@ -9,6 +9,11 @@ public class rumbaLoction {
 		row = 5;
 	}
 
+	public void restart() {
+		col = 5;
+		row = 5;
+	}
+
 	public int getCol() {
 		return col;
 	}
@@ -23,11 +28,6 @@ public class rumbaLoction {
 
 	public void setRow(int row) {
 		this.row = row;
-	}
-
-	public void reset() {
-		col = 0;
-		row = 0;
 	}
 
 	public void checkRumabLocation() {
