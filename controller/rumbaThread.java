@@ -3,18 +3,15 @@ package controller;
 import gui.RumbaGUI;
 
 public class rumbaThread extends Thread {
-    public volatile boolean flag;
+    private volatile boolean flag;
     private RumbaGUI gui;
     private RumbaReaction action;
-    private rumbaLoction rumba;
+    private rumbaLocation rumba;
 
-    public rumbaThread(RumbaGUI gui, rumbaLoction rumba, RumbaReaction action) {
+    public rumbaThread(RumbaGUI gui, rumbaLocation rumba, RumbaReaction action) {
         this.gui = gui;
         this.rumba = rumba;
         this.action = action;
-    }
-
-    public rumbaThread() {
     }
 
     public void setFlag(boolean clicked) {
@@ -36,6 +33,7 @@ public class rumbaThread extends Thread {
     @Override
     public void run() {
         while (flag) {
+
             boolean moveRight = false;
             boolean moveLeft = false;
             boolean moveUp = false;

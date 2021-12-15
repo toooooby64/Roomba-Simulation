@@ -16,6 +16,7 @@ public class RumbaGUI extends BorderPane {
     private Label tiles;
     private Button restartButton;
     private Button startButton;
+    private Button efficiencyButton;
     private int rows;
     private int cols;
     private double chanceOfDirtyTile;
@@ -90,8 +91,10 @@ public class RumbaGUI extends BorderPane {
         HBox.setMargin(tiles, new Insets(5));
         startButton = new Button("Start");
         restartButton = new Button("New Room");
+        efficiencyButton = new Button("Smart");
         header.getChildren().add(startButton);
         header.getChildren().add(restartButton);
+        header.getChildren().add(efficiencyButton);
         setTop(header);
     }
 
@@ -131,5 +134,9 @@ public class RumbaGUI extends BorderPane {
 
     public Button getRestartButton() {
         return restartButton;
+    }
+
+    public Button getEfficiencyButton() {
+        return efficiencyButton;
     }
 }

@@ -4,16 +4,17 @@ import gui.RumbaGUI;
 
 public class RumbaReaction {
     RumbaGUI testGui;
-    rumbaLoction loction;
+    rumbaLocation location;
     boolean[][] objectArray;
+    boolean[][] cleanArray;
     boolean moveRight = false;
     boolean moveLeft = false;
     boolean moveUp = false;
     boolean moveDown = false;
 
-    public RumbaReaction(RumbaGUI gui, rumbaLoction location) {
+    public RumbaReaction(RumbaGUI gui, rumbaLocation location) {
         this.testGui = gui;
-        this.loction = location;
+        this.location = location;
     }
 
     public void createObjectArray() {
@@ -26,20 +27,40 @@ public class RumbaReaction {
         }
     }
 
+    public void createCleanArray() {
+        cleanArray = new boolean[testGui.getCols()][testGui.getRows()];
+        for (int rowCounter = 0; rowCounter < testGui.getRows(); rowCounter++) {
+            for (int colCounter = 0; colCounter < testGui.getCols(); colCounter++) {
+                cleanArray[colCounter][rowCounter] = testGui.getLocationLabels()[colCounter][rowCounter]
+                        .getStyleClass().contains("clean");
+            }
+        }
+
+    }
+
     public boolean rumbaActionRight(boolean direction) {
-        return !direction == objectArray[loction.getCol() + 1][loction.getRow()];
+        return !direction == objectArray[location.getCol() + 1][location.getRow()];
     }
 
     public boolean rumbaActionDown(boolean direction) {
-        return !direction == objectArray[loction.getCol()][loction.getRow() + 1];
+        return !direction == objectArray[location.getCol()][location.getRow() + 1];
     }
 
     public boolean rumbaActionLeft(boolean direction) {
-        return !direction == objectArray[loction.getCol() - 1][loction.getRow()];
+        return !direction == objectArray[location.getCol() - 1][location.getRow()];
     }
 
     public boolean rumbaActionUp(boolean direction) {
-        return !direction == objectArray[loction.getCol()][loction.getRow() - 1];
+        return !direction == objectArray[location.getCol()][location.getRow() - 1];
+    }
+
+    public boolean rumbaCleanChecker(int row, int col) {
+        if (cleanArray[col + 1][row] && cleanArray[col - 1][row] && cleanArray[col][row + 1]
+                && cleanArray[col][row - 1]) {
+            System.out.println("the rumba right and left and down is a clean tiles");
+            return true;
+        } else
+            return false;
     }
 
     public void restart() {
