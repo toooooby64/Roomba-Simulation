@@ -15,10 +15,10 @@ https://user-images.githubusercontent.com/73498750/184474388-19779d24-dc59-47d1-
 ### Randomly Clean Rooms
 The Roomba can clean a room by randomly moving in one of four directions Up, Down, Left, Right. This mode takes and extremely long time to finally clean the room. In the example shown it took the roomba over 2 minutes to completely clean the room.
 
-https://user-images.githubusercontent.com/73498750/184474531-0e393984-d2c4-4314-a203-aa48bf4c45a9.mp4
+https://user-images.githubusercontent.com/73498750/184474568-23acebb1-75cd-4685-b233-9f4e2663d706.mp4
 
 ### Smart Mode
 Smart mode uses backtracking to clean the room much more effeciently. 
 
-https://user-images.githubusercontent.com/73498750/184474568-23acebb1-75cd-4685-b233-9f4e2663d706.mp4
+https://user-images.githubusercontent.com/73498750/184474531-0e393984-d2c4-4314-a203-aa48bf4c45a9.mp4
 
