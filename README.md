@@ -8,3 +8,9 @@ I currrently dont know how to have users install the JavaFX dependencies, but if
 There are four main features for this application. 
 
 ### Number 1
+
+#### Creating New Rooms
+You are able to create a new room with a click of a button
+
+https://user-images.githubusercontent.com/73498750/184474388-19779d24-dc59-47d1-bfdd-1b228f92a7c4.mp4
+
