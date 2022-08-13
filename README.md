@@ -7,4 +7,4 @@ I currrently dont know how to have users install the JavaFX dependencies, but if
 
 There are four main features for this application. 
 
-## Number 1
+### Number 1
